@@ -1,0 +1,31 @@
+#map {
+  display:block;
+  width:95%;
+  height:350px;
+  margin:0 auto;
+  -moz-box-shadow:0px 5px 20px #ccc;
+  -webkit-box-shadow:0px 5px 20px #ccc;
+  box-shadow:0px 5px 20px #ccc;
+}
+.input {
+  display:block;
+  width:95%;
+  height:100px;
+  margin:0 auto;
+  -moz-box-shadow:0px 5px 20px #ccc;
+  -webkit-box-shadow:0px 5px 20px #ccc;
+  box-shadow:0px 5px 20px #ccc;
+}
+.overlay{
+  display:block;
+  text-align:center;
+  color:#fff;
+  font-size:16px;
+  line-height:20px;
+  opacity:0.7;
+  background:#4477aa;
+  border-radius:4px;
+  box-shadow:2px 2px 10px #333;
+  text-shadow:1px 1px 1px #666;
+  padding:0 4px;
+}
