@@ -5,9 +5,8 @@ var textArea, board, chatMessage;
 
 window.onload = function(){
     textArea = document.getElementById("msg");
-
-    var lat = 35.170694;//緯度
-    var lng = 136.88163699999995;//経度
+    var lat = "";//緯度
+    var lng = "";//経度
     var map = new GMaps({
         div: "#map",//id名
         lat: lat,
@@ -17,27 +16,27 @@ window.onload = function(){
         streetViewControl : false,
         overviewMapControl: false
     });
+    //画面描画時に現在地を取得
+    this.getGeolocate();
 
     setInterval(function(){
-        GMaps.geolocate({
-          success: function(position) {
-            locationDataStore.send({
-                lat : position.coords.latitude,
-                lng : position.coords.longitude,
-            });
-          },
-          error: function(error) {
-            console.log('geolocate error '+error.message);
-          },
-          not_supported: function() {
-            console.log("geolocate not support");
-          },
-        });
+      this.getGeolocate();
     },10000);//10秒ごとに位置情報送信
 
     locationDataStore.on('send', function(data) {
         var lat = data.value.lat, lng = data.value.lng;
+        var img = '../img/azarashi.png';
+        map.removeMarkers();
         map.setCenter(lat, lng);
+        map.addMarker({
+          lat: lat,
+          lng: lng,
+          title: 'I’m here',
+          icon:img,
+          click: function(e) {
+            alert('Don’t touch me');
+          },
+        });
         map.drawOverlay({
           lat: lat,
           lng: lng,
@@ -48,6 +47,23 @@ window.onload = function(){
         });
         // console.log('recieve',data.value);
     });
+};
+
+function getGeolocate(){
+  GMaps.geolocate({
+    success: function(position) {
+      locationDataStore.send({
+          lat : position.coords.latitude,
+          lng : position.coords.longitude,
+      });
+    },
+    error: function(error) {
+      console.log('geolocate error '+error.message);
+    },
+    not_supported: function() {
+      console.log("geolocate not support");
+    },
+  });
 };
 
 function clickEvent(){
