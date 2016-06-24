@@ -5,16 +5,16 @@ var textArea, board, chatMessage;
 
 window.onload = function(){
     textArea = document.getElementById("msg");
-    var lat = "";//緯度
-    var lng = "";//経度
+    var lat = "";
+    var lng = "";
     var map = new GMaps({
         div: "#map",//id名
-        lat: lat,
-        lng: lng,
+        lat: lat,//緯度
+        lng: lng,//経度
         zoom: 18,//縮尺
-        panControl : false,
-        streetViewControl : false,
-        overviewMapControl: false
+        panControl : false,//???
+        streetViewControl : false,//ストリートビュー表示
+        overviewMapControl: false//???
     });
     //画面描画時に現在地を取得
     this.getGeolocate();

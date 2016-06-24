@@ -1,1 +1,1 @@
-body{	background-color: #F8F8FF;}.mapArea{	box-shadow: 0 0 20px #999;	padding: 10px;	border-radius: 2px;}
+@import url(pc.css) screen and (min-width: 769px);@import url(tablet.css) screen and (max-width: 768px);@import url(smart.css) screen and (max-width: 640px);body{	background-color: #F8F8FF;}.mapArea{	box-shadow: 0 0 20px #999;	padding: 10px;	border-radius: 2px;}
