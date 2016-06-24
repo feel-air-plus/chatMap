@@ -1,10 +1,8 @@
 var milkcocoa = new MilkCocoa("******.mlkcca.com");
 var locationDataStore = milkcocoa.dataStore("location");
 var chatDataStore = milkcocoa.dataStore("chat");
-var textArea, board, chatMessage;
 
 window.onload = function(){
-    textArea = document.getElementById("msg");
     var lat = "";
     var lng = "";
     var map = new GMaps({
@@ -65,7 +63,8 @@ function getGeolocate(){
     });
 };
 
-function clickEvent(){
+function postMessage(){
+    var textArea = document.getElementById("input-message");
     var chatMessage = textArea.value;
     var userId = $("#userId")[0].value;
     textArea.value = "";
