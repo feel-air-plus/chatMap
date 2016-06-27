@@ -1,4 +1,4 @@
-var milkcocoa = new MilkCocoa("******.mlkcca.com");
+var milkcocoa = new MilkCocoa("eggipdy4kpy.mlkcca.com");
 var locationDataStore = milkcocoa.dataStore("location");
 var chatDataStore = milkcocoa.dataStore("chat");
 
@@ -23,8 +23,16 @@ window.onload = function(){
     },10000);
 
     locationDataStore.on('send', function(data) {
-        var lat = data.value.lat, lng = data.value.lng;
-        var img = '../img/azarashi.png';
+        var lat = data.value.lat, lng = data.value.lng, userId = data.value.userId;
+
+        //本来、ユーザ情報はマップ画面前に選択済みの想定だが、
+        //現時点で実装されていないので、一旦マップ画面でユーザを選択させ、
+        //ユーザに応じて画像を切り替える
+        if(userId == "user1"){
+            var img = '../img/azarashi.png';            
+        }else{
+            var img = '../img/hakase.png';
+        }
         map.removeMarkers();
         map.setCenter(lat, lng);
         map.addMarker({
@@ -33,25 +41,27 @@ window.onload = function(){
             title: 'I’m here',
             icon:img,
             click: function(e) {
-          },
+            },
         });
         map.drawOverlay({
-          lat: lat,
-          lng: lng,
-          layer: 'overlayLayer',
-          content: '<div id="chatMessage"></div>',
-          verticalAlign: 'top',
-          horizontalAlign: 'center',
+            lat: lat,
+            lng: lng,
+            layer: 'overlayLayer',
+            content: '<div id="chatMessage"></div>',
+            verticalAlign: 'top',
+            horizontalAlign: 'center',
         });
     });
 };
 
 function getGeolocate(){
+    var userId = $("#userId")[0].value;
     GMaps.geolocate({
         success: function(position) {
             locationDataStore.send({
                 lat : position.coords.latitude,
                 lng : position.coords.longitude,
+                userId : userId,
             });
         },
         error: function(error) {

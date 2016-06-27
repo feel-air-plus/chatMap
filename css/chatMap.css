@@ -8,7 +8,7 @@
     box-shadow:0px 5px 20px #ccc;
 }
 .overlay{
-    display:block;
+    display:inline-block;
     text-align:center;
     color:#fff;
     font-size:10px;
@@ -34,7 +34,7 @@
     border: 0;
     padding: 10px;
     font-family: Arial, sans-serif;
-    color: #aaa;
+    color: #555555;
     border: solid 1px #bbb;
     margin:0 auto;
     -webkit-flex:1;
@@ -46,8 +46,20 @@
     -moz-box-shadow:inset 1px 4px 9px -0.6px rgba(0,0,0,0.5);
     box-shadow: inset 1px 4px 9px -0.6px rgba(0,0,0,0.5);
 }
+input.input-message::-webkit-input-placeholder {
+    color: #aaa;
+    font-weight: normal;
+}
+input.input-message:-ms-input-placeholder {
+    color: #aaa;
+    font-weight: normal;
+}
+input.input-message::-moz-placeholder {
+    color: #aaa;
+    font-weight: normal;
+}
 .input-message:focus {
-    border:solid 1px #19c1df    ;
+    border:solid 1px #19c1df;
 }
 .btn-post-message {
     text-align: center;

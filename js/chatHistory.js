@@ -1,4 +1,4 @@
-var milkcocoa = new MilkCocoa("******.mlkcca.com");
+var milkcocoa = new MilkCocoa("eggipdy4kpy.mlkcca.com");
 var chatDataStore = milkcocoa.dataStore("chat");
 
 $(function() {
